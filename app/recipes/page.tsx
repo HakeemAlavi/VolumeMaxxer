@@ -10,7 +10,7 @@ export default async function RecipesPage() {
   const recipes = await getRecipes();
 
   return (
-    <main className="min-h-screen bg-[#F8FAF5] px-6 py-10 text-slate-950">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,#dcfce7,transparent_35%),linear-gradient(180deg,#f8faf5,#ffffff)] px-6 py-10 text-slate-950">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
@@ -28,9 +28,18 @@ export default async function RecipesPage() {
             </p>
           </div>
 
-          <Button asChild>
-            <Link href="/">About Volume Maxxing</Link>
-          </Button>
+          <div className="flex flex-wrap gap-2">
+            <Button variant="outline" asChild className="rounded-full bg-white">
+              <Link href="/">About Volume Maxxing</Link>
+            </Button>
+
+            <Button
+              asChild
+              className="rounded-full bg-emerald-500 text-slate-950 hover:bg-emerald-400"
+            >
+              <Link href="/ai-builder">Build AI recipe brief</Link>
+            </Button>
+          </div>
         </div>
 
         <RecipeBrowser recipes={recipes} />
