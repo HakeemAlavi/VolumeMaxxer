@@ -4,6 +4,7 @@ import { RecipeBrowser } from "@/components/recipe-browser";
 import { Button } from "@/components/ui/button";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 export default async function RecipesPage() {
   const recipes = await getRecipes();

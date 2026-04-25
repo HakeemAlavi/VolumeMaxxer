@@ -5,7 +5,7 @@ import { recipes } from "../data/recipes";
 dotenv.config({ path: ".env.local" });
 
 const uri = process.env.MONGODB_URI;
-const dbName = process.env.MONGODB_DB || "volumemaxxing";
+const dbName = process.env.MONGODB_DB || "volume-maxxer-db";
 
 if (!uri) {
   throw new Error("MONGODB_URI is missing");
