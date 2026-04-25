@@ -3,9 +3,11 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { Clock, Dumbbell, Flame, Salad } from "lucide-react";
 
-import { recipes } from "@/data/recipes";
+import { getRecipeBySlug } from "@/lib/recipes";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+
+export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -13,16 +15,10 @@ type Props = {
   }>;
 };
 
-export function generateStaticParams() {
-  return recipes.map((recipe) => ({
-    slug: recipe.slug,
-  }));
-}
-
 export default async function RecipeDetailPage({ params }: Props) {
   const { slug } = await params;
 
-  const recipe = recipes.find((recipe) => recipe.slug === slug);
+  const recipe = await getRecipeBySlug(slug);
 
   if (!recipe) {
     notFound();

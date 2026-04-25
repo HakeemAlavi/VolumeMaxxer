@@ -1,9 +1,13 @@
 import Link from "next/link";
-import { recipes } from "@/data/recipes";
+import { getRecipes } from "@/lib/recipes";
 import { RecipeBrowser } from "@/components/recipe-browser";
 import { Button } from "@/components/ui/button";
 
-export default function RecipesPage() {
+export const dynamic = "force-dynamic";
+
+export default async function RecipesPage() {
+  const recipes = await getRecipes();
+
   return (
     <main className="min-h-screen bg-[#F8FAF5] px-6 py-10 text-slate-950">
       <div className="mx-auto max-w-6xl">
